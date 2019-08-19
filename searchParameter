@@ -1,0 +1,23 @@
+pathToFile1 = 'data.txt'
+
+pattern = "X"
+char_before ="["
+char_after  = "]"
+val = []
+
+def searchParameters(pathToFile, parameter, char_before, char_after):
+ linenum = 0
+ linestr = []
+ valInStr = []
+ with open(pathToFile) as myfile:
+  for line in myfile:
+   linenum += 1
+   if line.find(pattern) != -1:
+    valinstr = line.rstrip('\n').split(char_before)[1]
+    valinstr = valinstr.split(char_after)[0]
+    valInStr.append(valinstr)
+  
+ return valInStr
+
+val = searchParameters(pathToFile1, pattern, char_before, char_after)
+print('Elements : ' + str(val))
